@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  web:
+    image: golang
+    ports:
+      - 8080:8080
+    depends_on:
+      - database
+    networks:
+      - mynet
+
+  database:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    volumes:
+      - /data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    networks:
+      - mynet
+ networks:
+   mynet:
+     driver: "bridge"
