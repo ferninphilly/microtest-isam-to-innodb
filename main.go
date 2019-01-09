@@ -61,8 +61,8 @@ func main() {
 	affect, err := res.RowsAffected()
 	checkErr(err, "Error on getting the number of rows affected")
 
+	exitmsg := fmt.Sprintf("We have completed altering table %s from myIsam to InnoDb", id.Table)
 	fmt.Println(affect)
-
-	fmt.Sprintf("We have completed altering table %s from myIsam to InnoDb", id.Table)
+	fmt.Println(exitmsg)
 	defer db.Close()
 }
